@@ -18,25 +18,6 @@ newBookButton.addEventListener("click", unhideForm, false);
 addBookButton.addEventListener("click", hideForm, false);
 hideForm();
 
-function Book(title, author, pages, status) {
-    this.title = title != "" ? title : "Unknown Title";
-    this.author = author != "" ? author : "Unknown Author";
-    this.pages = pages != "" ? pages : "Unknown no.";
-    this.haveToRead = !status;
-    this.read = !status ? "not read yet" : "already read";
-
-    this.info = function() {
-        return (`${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`)
-    };
-}
-
-const bookPrototype = Book.prototype;
-
-bookPrototype.setAsRead = function () {
-    this.haveToRead = false;
-    this.read = "already read";
-}
-
 function addBookByButton(event) {
     event.preventDefault();
     let newBook = new Book(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookStatus.checked);
@@ -114,10 +95,10 @@ function removeBook(event) {
 }
 
 function setBookReadStatus(event) {
-    let bookCard = event.target.parentElement;
+    let bookCard = event.target.parentElement.parentElement;
     let index = bookCard.dataset.indexNumber;
     let book = myLibrary[index];
-    book.setAsRead();
+    book.readStatus = true;
     displayBooks();
 }
 
@@ -126,7 +107,7 @@ const book2 = new Book("Die Stadt der träumenden Bücher", "Walter Moers", 480,
 const book3 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 366, false);
 const book4 = new Book("Eragon", "Christopher Paolini", 509, false);
 
-addBookToLibrary(book1);
+addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", 295, false));
 addBookToLibrary(book2);
 addBookToLibrary(book3);
 addBookToLibrary(book4);
