@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="library.js" defer></script>
+</head>
+<body>
+    <div id="book-display"></div>
+    <button type="button" id="new-book">New Book</button>
+    <div id="form-container">
+        <form action="library.js">
+            <ul>
+                <li>
+                    <label for="title">Book Title</label>
+                    <input type="text" name="title" id="title">
+                </li>
+                <li>
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author">
+                </li>
+                <li>
+                    <label for="pages">No. of pages</label>
+                    <input type="number" name="pages" id="pages">
+                </li>
+                <li class="checkbox">
+                    <label for="status">Did you read the book?</label>
+                    <input type="checkbox" name="status" id="status">
+                </li>
+                <button id="add-book">Add Book</button>
+            </ul>
+        </form>
+    </div>
+</body>
+</html>
